@@ -6,7 +6,6 @@
 import { requestPermission } from './public/firebase.client';
 
 export default {
-  props: ['3'],
   methods: {
     async handleSubscribe() {
       // Ensure requestPermission is available only on the client
