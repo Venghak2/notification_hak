@@ -11,11 +11,12 @@ export default {
     async handleSubscribe() {
       // Ensure requestPermission is available only on the client
       if (typeof requestPermission !== 'function') return;
-
+      const config = useRuntimeConfig()
       
       const token = await requestPermission();
       if (token) {
-        const url = `${process.env.BASE_URL}/user/subscribe`;
+        const url = `${config.public.BASE_URL}/user/subscribe`;
+        //const url = `https://77fa133fd6ff.ngrok.app/user/subscribe`;
         const res = await fetch(url, {
           method: 'POST',
           headers: {

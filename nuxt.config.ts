@@ -10,5 +10,8 @@ export default defineNuxtConfig({
     FIREBASE_SENDER_ID: process.env.FIREBASE_SENDER_ID,
     FIREBASE_APP_ID: process.env.FIREBASE_APP_ID,
     FIREBASE_VAPID_KEY: process.env.FIREBASE_VAPID_KEY,
+    public: {
+      BASE_URL: process.env.BASE_URL,
+    }
   }
 })
