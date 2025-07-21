@@ -6,19 +6,20 @@
 import { requestPermission } from './public/firebase.client';
 
 export default {
-  props: ['1'],
+  props: ['3'],
   methods: {
     async handleSubscribe() {
       // Ensure requestPermission is available only on the client
       if (typeof requestPermission !== 'function') return;
 
+      
       const token = await requestPermission();
       if (token) {
-        const res = await fetch('https://1c3ee10c493b.ngrok.app/user/subscribe', {
+        const url = `${process.env.BASE_URL}/user/subscribe`;
+        const res = await fetch(url, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Auqthorization': `Bearer ${token}`,
           },
           body: JSON.stringify({ token }),
         });
