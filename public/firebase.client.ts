@@ -3,17 +3,7 @@ import { getMessaging, getToken } from 'firebase/messaging';
 
 let requestPermission;
 
-// Ensure this code runs only in the browser
-if (process.client) {
-  // const firebaseConfig = {
-  //   apiKey: process.env.FIREBASE_API_KEY,
-  //   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  //   projectId: process.env.FIREBASE_PROJECT_ID,
-  //   storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-  //   messagingSenderId: process.env.FIREBASE_SENDER_ID,
-  //   appId: process.env.FIREBASE_APP_ID,
-  // };
-
+if (import.meta.client) {
   const firebaseConfig = {
     apiKey: "AIzaSyDEknhMLtR7yGyjfjI3Reyn1WGvkL9K6aI",
     authDomain: "notification-91d47.firebaseapp.com",
@@ -43,7 +33,6 @@ if (process.client) {
     }
   };
 } else {
-  // SSR fallback
   requestPermission = () => Promise.resolve(null);
 }
 

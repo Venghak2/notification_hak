@@ -8,14 +8,13 @@ import { requestPermission } from './public/firebase.client';
 export default {
   methods: {
     async handleSubscribe() {
-      // Ensure requestPermission is available only on the client
+
       if (typeof requestPermission !== 'function') return;
-      const config = useRuntimeConfig()
-      
+      // const config = useRuntimeConfig()
+      //const url = `${config.public.base_url}/user/subscribe`;
+      const url = `https://d16d48bb3a00.ngrok.app/user/subscribe`;
       const token = await requestPermission();
       if (token) {
-        const url = `${config.public.BASE_URL}/user/subscribe`;
-        //const url = `https://77fa133fd6ff.ngrok.app/user/subscribe`;
         const res = await fetch(url, {
           method: 'POST',
           headers: {
